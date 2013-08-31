@@ -120,7 +120,7 @@ public class RLContinuousStateBased extends BulkFitnessFunctionMT implements AHN
 		targetPerformance = props.getDoubleProperty(HyperNEATEvolver.PERFORMANCE_TARGET_KEY);
 		environments = new Environment[environmentCount];
 		for (int e = 0; e < environments.length; e++) {
-			environments[e] = props.newObjectProperty(props.getClassProperty(ENVIRONMENT_CLASS, SimpleNavigationEnvironment.class));
+			environments[e] = (Environment) props.newObjectProperty(props.getClassProperty(ENVIRONMENT_CLASS, SimpleNavigationEnvironment.class));
 			environments[e].rlcss = this;
 		}
 		enableNoveltySearch = props.getBooleanProperty(NOVELTY_SEARCH, false);
@@ -138,7 +138,7 @@ public class RLContinuousStateBased extends BulkFitnessFunctionMT implements AHN
 			nsEnvironments = new Environment[(int) Math.pow(3, envSize)-1];
 			//nsEnvironments = new Environment[1];
 			for (int e = 0; e < nsEnvironments.length; e++) {
-				nsEnvironments[e] = props.newObjectProperty(props.getClassProperty(ENVIRONMENT_CLASS, SimpleNavigationEnvironment.class));
+				nsEnvironments[e] = (Environment) props.newObjectProperty(props.getClassProperty(ENVIRONMENT_CLASS, SimpleNavigationEnvironment.class));
 				nsEnvironments[e].rlcss = this;
 				// If possible, generate environments of varying difficulty.
 				for (int i = 1; i < e && nsEnvironments[e].increaseDifficultyPossible(); i++) {
